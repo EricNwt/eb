@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<title></title>
+	<style type="text/css" media="screen">
+	body {
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.flickr-embed {
+  position: relative;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  background: #FFF;
+  box-shadow: inset 0px 0px 0px 1px #EEEEEE;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.flickr-embed a {
+  text-decoration: none;
+}
+.flickr-embed.is-slideshow .slide {
+  display: none;
+}
+.flickr-embed.is-slideshow .slide[data-is-current-slide] {
+  display: block;
+  transform: rotate(0);
+}
+.flickr-embed .flickr-embed-header .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 15px;
+  float: left;
+  margin-top: 8px;
+  background-size: cover;
+}
+.flickr-embed .flickr-embed-header .branding {
+  float: right;
+  width: 50px;
+  margin: 6px 15px 0 15px;
+  white-space: normal;
+  height: 38px;
+}
+.flickr-embed .flickr-embed-header .branding svg {
+  fill: #989898;
+  pointer-events: none;
+  height: 38px;
+}
+.flickr-embed .flickr-embed-header .branding a {
+  display: block;
+}
+.flickr-embed .flickr-embed-header .attribution {
+  font-size: 15px;
+  margin: 0 0 0 15px;
+  line-height: 46px;
+}
+.flickr-embed .flickr-embed-header .attribution a {
+  color: #989898;
+}
+.flickr-embed .flickr-embed-photo {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  position: relative;
+  background: black;
+  height: 100vh;
+}
+.flickr-embed .flickr-embed-photo > a {
+  display: block;
+}
+.flickr-embed .flickr-embed-photo a {
+  color: white;
+}
+.flickr-embed .flickr-embed-photo img {
+  margin-bottom: -3px;
+  pointer-events: none;
+  max-width: 100%;
+  max-height: 100vh;
+}
+.flickr-embed .flickr-embed-photo video {
+  max-width: 100%;
+  max-height: 100vh;
+}
+.flickr-embed .flickr-embed-photo canvas {
+  z-index: 1;
+  cursor: move;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.flickr-embed .flickr-embed-photo .instructions-overlay {
+  position: absolute;
+  color: white;
+  top: 50%;
+  margin-top: -25px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  line-height: 1.5em;
+}
+.flickr-embed .flickr-embed-photo .instructions-overlay p {
+  margin-top: 10px;
+}
+.flickr-embed .flickr-embed-photo .branding,
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer,
+.flickr-embed .flickr-embed-photo .sharing {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  z-index: 2;
+}
+.flickr-embed .flickr-embed-photo .sharing {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 260px;
+  pointer-events: auto;
+  z-index: 2;
+}
+.flickr-embed .flickr-embed-photo .sharing .share-logo {
+  width: 35px;
+  height: 35px;
+  float: left;
+  margin-right: 15px;
+}
+.flickr-embed .flickr-embed-photo .sharing svg {
+  pointer-events: none;
+  fill: white;
+  width: 35px;
+  height: 35px;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer {
+  bottom: 15px;
+  left: 15px;
+  top: 15px;
+  right: 15px;
+  pointer-events: none;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer.is-video {
+  bottom: 70px;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .title-and-attribution,
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .license {
+  position: absolute;
+  bottom: 0px;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .title-and-attribution {
+  width: 100%;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .attribution,
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .title {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 14px;
+  left: 0;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .attribution a,
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .title a {
+  pointer-events: initial;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .title {
+  width: 50%;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .attribution {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .license {
+  right: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 10px;
+  pointer-events: none;
+  display: inline-block;
+  line-height: 1.6em;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer.is-narrow .title-and-attribution {
+  bottom: 20px;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer.is-narrow .license {
+  left: 0;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .curation-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border-bottom: none;
+  transition: opacity 150ms ease-in-out;
+  padding: 0 110px 0 0;
+  height: initial;
+  pointer-events: initial;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .curation-header h1 {
+  color: white;
+}
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .curation-header h1 .curation-title,
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .curation-header h1 .owner-attribution,
+.flickr-embed .flickr-embed-photo .flickr-embed-photo-footer .curation-header h1 .owner-attribution a {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.flickr-embed .flickr-embed-photo .branding {
+  top: 5px;
+  right: 15px;
+  width: 80px;
+}
+.flickr-embed .flickr-embed-photo .branding svg {
+  fill: white;
+  stroke: black;
+  stroke-width: 1;
+  stroke-opacity: 0.3;
+}
+.flickr-embed .flickr-embed-photo:hover .flickr-embed-photo-footer,
+.flickr-embed .flickr-embed-photo:hover .branding,
+.flickr-embed .flickr-embed-photo:hover .sharing,
+.flickr-embed .flickr-embed-photo:hover .navigation {
+  opacity: 1;
+}
+.flickr-embed .flickr-embed-photo .navigation {
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 80px;
+  margin-top: -40px;
+  background: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  z-index: 2;
+}
+.flickr-embed .flickr-embed-photo .navigation::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 29px;
+  transform: rotate(45deg);
+}
+.flickr-embed .flickr-embed-photo .navigation.previous {
+  left: 15px;
+}
+.flickr-embed .flickr-embed-photo .navigation.previous::before {
+  left: 14px;
+  border-left: 4px solid white;
+  border-bottom: 4px solid white;
+}
+.flickr-embed .flickr-embed-photo .navigation.next {
+  right: 15px;
+}
+.flickr-embed .flickr-embed-photo .navigation.next::before {
+  left: 5px;
+  border-top: 4px solid white;
+  border-right: 4px solid white;
+}
+.flickr-embed .flickr-embed-photo .navigation[disabled="disabled"]::before {
+  border-color: #444;
+}
+.flickr-embed .flickr-embed-photo .navigation:not([disabled="disabled"]):hover,
+.flickr-embed .flickr-embed-photo .navigation:active {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+.flickr-embed .flickr-embed-photo:hover {
+  cursor: pointer;
+}
+.flickr-embed .flickr-embed-footer {
+  padding: 15px;
+}
+.flickr-embed .flickr-embed-footer a {
+  color: #212124;
+}
+.flickr-embed .flickr-embed-footer h1 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.flickr-embed .flickr-embed-footer.has-description h1 {
+  margin: 0 0 15px 0;
+}
+.flickr-embed .flickr-embed-footer.is-truncated {
+  padding-bottom: 5px;
+}
+.flickr-embed .flickr-embed-footer .description,
+.flickr-embed .flickr-embed-footer .description-full {
+  font-size: 14px;
+  line-height: 20px;
+  position: static;
+}
+.flickr-embed .flickr-embed-footer .description-full {
+  display: none;
+}
+.flickr-embed .flickr-embed-footer .truncated-dots {
+  display: block;
+  width: 100%;
+  height: 15px;
+  padding: 10px 0 0 0;
+}
+.flickr-embed .flickr-embed-footer .truncated-dots:hover {
+  cursor: pointer;
+}
+.flickr-embed .flickr-embed-footer .truncated-dots .dots,
+.flickr-embed .flickr-embed-footer .truncated-dots .dots::before,
+.flickr-embed .flickr-embed-footer .truncated-dots .dots::after {
+  pointer-events: none;
+  width: 5px;
+  height: 5px;
+  background: #ADADAD;
+  border-radius: 50%;
+  margin: 0 auto;
+  content: "";
+  display: block;
+  position: relative;
+}
+.flickr-embed .flickr-embed-footer .truncated-dots .dots::before {
+  left: -8px;
+}
+.flickr-embed .flickr-embed-footer .truncated-dots .dots::after {
+  left: 8px;
+  top: -5px;
+}
+.flickr-embed .curation-header {
+  box-sizing: border-box;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 16px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 100%;
+}
+.flickr-embed .curation-header h1 {
+  min-width: 0;
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flickr-embed .curation-header h1 .curation-label,
+.flickr-embed .curation-header h1 .separator {
+  font-weight: 400;
+  -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
+}
+.flickr-embed .curation-header h1 .separator {
+  margin: 0 3px;
+}
+.flickr-embed .curation-header h1 .curation-title {
+  font-weight: 600;
+  color: #212124;
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 40px;
+}
+.flickr-embed .curation-header h1 .owner-attribution {
+  color: #989898;
+  font-weight: 400;
+  margin-left: 4px;
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 60px;
+}
+.flickr-embed .curation-header h1 .owner-attribution a {
+  font-weight: 600;
+  color: #212124;
+  margin-left: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.flickr-embed[data-initial-fade] .navigation,
+.flickr-embed[data-initial-fade] .branding,
+.flickr-embed[data-initial-fade] .sharing,
+.flickr-embed[data-initial-fade] .flickr-embed-photo-footer {
+  opacity: 1;
+}
+
+	</style>
+	<script type="text/javascript">
+		var views = {};
+
+		function addview(url) {
+			parent.postMessage({
+				name: 'loaded',
+				data: photoIds[slideshowCurrentPositionIndex]
+			}, '*');
+
+			if (views[url]) {
+				return;
+			}
+
+			views[url] = true;
+
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://embedr.flickr.com' + url, true);
+			xhr.setRequestHeader('X-Embedr-Referrer', document.referrer);
+			xhr.send();
+		}
+	</script>
+
+</head>
+<body>
+
+	<div class="flickr-embed is-slideshow" data-flickr-embed="true">
+
+
+	<div class="flickr-embed-photo show-navigation" style="width: 375px; height: 375px; background-color: ;">
+
+
+				<a data-rapid="photo" data-slideshow-position="0" data-is-current-slide="true" target="_blank" href="https://www.flickr.com/photos/exercitooficial/50472816638/in/album-72177720316589709" class="slide" title="4º Festival de Fotografias Militares 2020">
+					<img src="a_data_004/50472816638_f826fc985b.jpg" width="375" height="250" alt="4º Festival de Fotografias Militares 2020" onload="addview(this.getAttribute('data-path'))" data-path="/photos/50472816638/addview">
+				</a>
+			<div data-slideshow-position="0" class="flickr-embed-photo-footer slide  " data-is-current-slide="true">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/50472816638/in/album-72177720316589709">4º Festival de Fotografias Militares 2020</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="1" target="_blank" href="https://www.flickr.com/photos/exercitooficial/32485489124/in/album-72177720316589709" class="slide" title="Forças Especiais">
+					<img src="a_data_004/32485489124_e2ac9a3426.jpg" width="375" height="251" alt="Forças Especiais" onload="addview(this.getAttribute('data-path'))" data-path="/photos/32485489124/addview">
+				</a>
+			<div data-slideshow-position="1" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/32485489124/in/album-72177720316589709">Forças Especiais</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="2" target="_blank" href="https://www.flickr.com/photos/exercitooficial/51639088835/in/album-72177720316589709" class="slide" title="5º Festival de Fotografias Militares">
+					<img src="a_data_004/51639088835_1667fda005.jpg" width="375" height="254" alt="5º Festival de Fotografias Militares" onload="addview(this.getAttribute('data-path'))" data-path="/photos/51639088835/addview">
+				</a>
+			<div data-slideshow-position="2" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/51639088835/in/album-72177720316589709">5º Festival de Fotografias Militares</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="3" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33173726632/in/album-72177720316589709" class="slide" title="Infantaria de Selva">
+					<img src="a_data_004/33173726632_d20f40f91a.jpg" width="375" height="281" alt="Infantaria de Selva" onload="addview(this.getAttribute('data-path'))" data-path="/photos/33173726632/addview">
+				</a>
+			<div data-slideshow-position="3" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33173726632/in/album-72177720316589709">Infantaria de Selva</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="4" target="_blank" href="https://www.flickr.com/photos/exercitooficial/52456436309/in/album-72177720316589709" class="slide" title="combatente_aeromóvel">
+					<img src="a_data_004/52456436309_44dffc7961.jpg" width="375" height="254" alt="combatente_aeromóvel" onload="addview(this.getAttribute('data-path'))" data-path="/photos/52456436309/addview">
+				</a>
+			<div data-slideshow-position="4" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/52456436309/in/album-72177720316589709">combatente_aeromóvel</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="5" target="_blank" href="https://www.flickr.com/photos/exercitooficial/32514567973/in/album-72177720316589709" class="slide" title="Infantaria de Selva">
+					<img src="a_data_004/32514567973_67d207ca29.jpg" width="375" height="281" alt="Infantaria de Selva" onload="addview(this.getAttribute('data-path'))" data-path="/photos/32514567973/addview">
+				</a>
+			<div data-slideshow-position="5" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/32514567973/in/album-72177720316589709">Infantaria de Selva</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="6" target="_blank" href="https://www.flickr.com/photos/exercitooficial/48896760573/in/album-72177720316589709" class="slide" title="3º Festival de Fotografias Militares">
+					<img src="a_data_004/48896760573_edd8e9ff10.jpg" width="375" height="250" alt="3º Festival de Fotografias Militares" onload="addview(this.getAttribute('data-path'))" data-path="/photos/48896760573/addview">
+				</a>
+			<div data-slideshow-position="6" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/48896760573/in/album-72177720316589709">3º Festival de Fotografias Militares</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="7" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33172841282/in/album-72177720316589709" class="slide" title="Forças Especiais">
+					<img src="a_data_004/33172841282_96503d319b.jpg" width="375" height="252" alt="Forças Especiais" onload="addview(this.getAttribute('data-path'))" data-path="/photos/33172841282/addview">
+				</a>
+			<div data-slideshow-position="7" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33172841282/in/album-72177720316589709">Forças Especiais</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="8" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33172841532/in/album-72177720316589709" class="slide" title="Forças Especiais">
+					<img src="a_data_004/33172841532_032c3aa59a.jpg" width="375" height="249" alt="Forças Especiais" onload="addview(this.getAttribute('data-path'))" data-path="/photos/33172841532/addview">
+				</a>
+			<div data-slideshow-position="8" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33172841532/in/album-72177720316589709">Forças Especiais</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="9" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33287332166/in/album-72177720316589709" class="slide" title="Forças Especiais">
+					<img src="a_data_004/33287332166_3286052f15.jpg" width="375" height="281" alt="Forças Especiais" onload="addview(this.getAttribute('data-path'))" data-path="/photos/33287332166/addview">
+				</a>
+			<div data-slideshow-position="9" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33287332166/in/album-72177720316589709">Forças Especiais</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="10" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33286998566/in/album-72177720316589709" class="slide" title="Infantaria Paraquedista">
+					<img src="a_data_004/33286998566_91bd7a9f9f.jpg" width="375" height="271" alt="Infantaria Paraquedista" onload="addview(this.getAttribute('data-path'))" data-path="/photos/33286998566/addview">
+				</a>
+			<div data-slideshow-position="10" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33286998566/in/album-72177720316589709">Infantaria Paraquedista</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="11" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33327763475/in/album-72177720316589709" class="slide" title="Infantaria Paraquedista">
+					<img src="a_data_004/33327763475_ed2e6cf623.jpg" width="375" height="250" alt="Infantaria Paraquedista" onload="addview(this.getAttribute('data-path'))" data-path="/photos/33327763475/addview">
+				</a>
+			<div data-slideshow-position="11" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/33327763475/in/album-72177720316589709">Infantaria Paraquedista</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="12" target="_blank" href="https://www.flickr.com/photos/exercitooficial/52456697658/in/album-72177720316589709" class="slide" title="cumprimento_do_dever">
+					<img src="a_data_004/52456697658_825c1211aa.jpg" width="375" height="254" alt="cumprimento_do_dever" onload="addview(this.getAttribute('data-path'))" data-path="/photos/52456697658/addview">
+				</a>
+			<div data-slideshow-position="12" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/52456697658/in/album-72177720316589709">cumprimento_do_dever</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="13" target="_blank" href="https://www.flickr.com/photos/exercitooficial/53039967132/in/album-72177720316589709" class="slide" title="Infantaria">
+					<img src="a_data_004/53039967132_cef6bc2e44.jpg" width="375" height="250" alt="Infantaria" onload="addview(this.getAttribute('data-path'))" data-path="/photos/53039967132/addview">
+				</a>
+			<div data-slideshow-position="13" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/53039967132/in/album-72177720316589709">Infantaria</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<a data-rapid="photo" data-slideshow-position="14" target="_blank" href="https://www.flickr.com/photos/exercitooficial/50472805373/in/album-72177720316589709" class="slide" title="4º Festival de Fotografias Militares 2020">
+					<img src="a_data_004/50472805373_2280bcc7fc.jpg" width="375" height="250" alt="4º Festival de Fotografias Militares 2020" onload="addview(this.getAttribute('data-path'))" data-path="/photos/50472805373/addview">
+				</a>
+			<div data-slideshow-position="14" class="flickr-embed-photo-footer slide  ">
+			
+			
+			
+				<div class="license">All rights reserved</div>
+			
+				<div class="title-and-attribution">
+			
+							<div class="title truncate">
+								<a data-rapid="owner" target="_blank" href="https://www.flickr.com/photos/exercitooficial/50472805373/in/album-72177720316589709">4º Festival de Fotografias Militares 2020</a>
+							</div>
+			
+						<div class="attribution truncate">
+							<a data-rapid="owner" class="" href="https://www.flickr.com/photos/exercitooficial" target="_blank">
+								by Exército Brasileiro
+							</a>
+						</div>
+			
+				</div>
+			
+						<header class="curation-header">
+							<h1>
+								<span class="curation-label">Album</span>
+									<span class="separator">—</span>
+									<a class="curation-title" target="_blank" href="https://www.flickr.com/photos/144385323@N04/albums/72177720316589709">Dia da Infantaria</a>
+								<span class="owner-attribution">by <a target="_blank" href="https://www.flickr.com/photos/144385323@N04">Exército Brasileiro - www.eb.mil.br</a></span>
+							</h1>
+						</header>
+			</div>
+
+				<div class="branding"><a data-rapid="flickr" target="_blank" href="https://www.flickr.com/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 50"><path d="M3 23.64H0V20h3.1v-.98c0-4.48 2.1-6.04 6.27-6.04 1.13 0 2 .17 2.66.3l-.32 3.57c-.4-.14-.8-.23-1.6-.23-1.3 0-1.8.93-1.8 2.4V20H12v3.64H8.2v11.38H3V23.64zm11-10.32h5.2v21.7H14v-21.7zm7.8.35h5.22v3.82h-5.2zm0 6.3h5.22V35h-5.2zm19.34 4.3c-.96-.6-1.9-.85-3.15-.85-2.3 0-4 1.56-4 4.17 0 2.3 2 3.9 4.2 3.9 1.2 0 2.35-.3 3.22-.7l.12 3.9c-1.3.4-2.87.6-4.27.6-4.97 0-8.76-2.9-8.76-7.88 0-5 3.8-7.9 8.8-7.9 1.56 0 2.95.24 4.13.82l-.37 3.8zM43.8 13.3H49v12.96h.06l4.34-6.33h5.7l-5.24 6.9L59.53 35h-6.3l-4.17-7.47H49V35h-5.2V13.3zm27.95 10.8c-.58-.16-1.16-.16-1.77-.16-2.43 0-3.8 1.76-3.8 4.72v6.36H61V19.95h4.75v2.78h.06c.9-1.92 2.2-3.13 4.5-3.13.6 0 1.28.1 1.8.17l-.25 4.34z"></path></svg></a></div>
+
+			<a data-rapid="navigation previous" class="navigation previous" disabled="disabled"></a>
+			<a data-rapid="navigation next" class="navigation next"></a>
+	</div>
+
+
+</div>
+
+	<script>
+
+
+			var slideshowCurrentPositionIndex = 0;
+			    isSlideshow = true;
+
+				!function(){function e(e){var t,i,n,o,r=slideshowCurrentPositionIndex,d=document.querySelectorAll("img, video").length;if("previous"===e&&slideshowCurrentPositionIndex>0&&slideshowCurrentPositionIndex--,"next"===e&&slideshowCurrentPositionIndex<d-1&&slideshowCurrentPositionIndex++,r!==slideshowCurrentPositionIndex){for(t=document.querySelectorAll(".slide[data-is-current-slide]"),i=document.querySelectorAll(".slide[data-slideshow-position='"+slideshowCurrentPositionIndex+"']"),n=document.querySelector(".slide[data-is-current-slide] video"),n&&n.pause(),o=0;o<t.length;o++)t[o].removeAttribute("data-is-current-slide");for(o=0;o<i.length;o++)i[o].setAttribute("data-is-current-slide","true");parent.postMessage({name:"update:height",height:document.body.clientHeight+"px"},"*")}0===slideshowCurrentPositionIndex?document.querySelector(".navigation.previous").setAttribute("disabled","disabled"):0===r&&slideshowCurrentPositionIndex>0&&document.querySelector(".navigation.previous").removeAttribute("disabled"),slideshowCurrentPositionIndex===d-1?document.querySelector(".navigation.next").setAttribute("disabled","disabled"):r===d-1&&slideshowCurrentPositionIndex<=d&&document.querySelector(".navigation.next").removeAttribute("disabled")}document.querySelector(".navigation.previous").addEventListener("click",function(t){t.target.hasAttribute("disabled")||e("previous")}),document.querySelector(".navigation.next").addEventListener("click",function(t){t.target.hasAttribute("disabled")||e("next")}),document.onkeydown=function(t){37===t.keyCode?e("previous"):39===t.keyCode&&e("next")}}();
+
+
+		var photoSizes = [[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_t.jpg","key":"t"},{"label":"s","width":240,"height":160,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_m.jpg","key":"s"},{"label":"n","width":320,"height":213,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":333,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b.jpg","key":"m"},{"label":"z","width":640,"height":427,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_z.jpg","key":"z"},{"label":"c","width":800,"height":533,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_c.jpg","key":"c"},{"label":"l","width":1024,"height":683,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_f826fc985b_b.jpg","key":"l"},{"label":"h","width":1600,"height":1067,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_03bb2416b4_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_03bb2416b4_h.jpg","key":"h"},{"label":"k","width":2048,"height":1365,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_ad3bb2a564_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_ad3bb2a564_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"6k","width":null,"height":null,"source":"undefined","url":"undefined","key":"6k"},{"label":"o","width":6000,"height":4000,"source":"https:\/\/live.staticflickr.com\/65535\/50472816638_7aed003bb1_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472816638_7aed003bb1_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_s.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_q.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_t.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_t.jpg","key":"t"},{"label":"s","width":240,"height":161,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_m.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_m.jpg","key":"s"},{"label":"n","width":320,"height":214,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_n.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":335,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426.jpg","key":"m"},{"label":"z","width":640,"height":428,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_z.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_z.jpg","key":"z"},{"label":"c","width":800,"height":536,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_c.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_c.jpg","key":"c"},{"label":"l","width":1024,"height":685,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_b.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_e2ac9a3426_b.jpg","key":"l"},{"label":"h","width":1600,"height":1071,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_2ba343ccac_h.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_2ba343ccac_h.jpg","key":"h"},{"label":"k","width":2048,"height":1371,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_cc14217293_k.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_cc14217293_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"o","width":3872,"height":2592,"source":"https:\/\/live.staticflickr.com\/657\/32485489124_fdfaf1f951_o.jpg","url":"https:\/\/live.staticflickr.com\/657\/32485489124_fdfaf1f951_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_q.jpg","key":"q"},{"label":"t","width":100,"height":68,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_t.jpg","key":"t"},{"label":"s","width":240,"height":163,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_m.jpg","key":"s"},{"label":"n","width":320,"height":217,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":339,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005.jpg","key":"m"},{"label":"z","width":640,"height":434,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_z.jpg","key":"z"},{"label":"c","width":800,"height":542,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_c.jpg","key":"c"},{"label":"l","width":1024,"height":694,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_1667fda005_b.jpg","key":"l"},{"label":"h","width":1600,"height":1084,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_f14dfd3bfe_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_f14dfd3bfe_h.jpg","key":"h"},{"label":"k","width":2048,"height":1387,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_4e6eedd620_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_4e6eedd620_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"6k","width":null,"height":null,"source":"undefined","url":"undefined","key":"6k"},{"label":"o","width":10984,"height":7441,"source":"https:\/\/live.staticflickr.com\/65535\/51639088835_2ea4719d81_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/51639088835_2ea4719d81_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_s.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_q.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_q.jpg","key":"q"},{"label":"t","width":100,"height":75,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_t.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_t.jpg","key":"t"},{"label":"s","width":240,"height":180,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_m.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_m.jpg","key":"s"},{"label":"n","width":320,"height":240,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_n.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":375,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a.jpg","key":"m"},{"label":"z","width":640,"height":480,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_z.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_z.jpg","key":"z"},{"label":"c","width":800,"height":600,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_c.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_c.jpg","key":"c"},{"label":"l","width":1024,"height":768,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_b.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_d20f40f91a_b.jpg","key":"l"},{"label":"o","width":1024,"height":768,"source":"https:\/\/live.staticflickr.com\/3790\/33173726632_70d769e34e_o.jpg","url":"https:\/\/live.staticflickr.com\/3790\/33173726632_70d769e34e_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_q.jpg","key":"q"},{"label":"t","width":100,"height":68,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_t.jpg","key":"t"},{"label":"s","width":240,"height":162,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_m.jpg","key":"s"},{"label":"n","width":320,"height":216,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":338,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961.jpg","key":"m"},{"label":"z","width":640,"height":432,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_z.jpg","key":"z"},{"label":"c","width":800,"height":540,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_c.jpg","key":"c"},{"label":"l","width":1024,"height":691,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_44dffc7961_b.jpg","key":"l"},{"label":"h","width":1600,"height":1080,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_cc53505b19_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_cc53505b19_h.jpg","key":"h"},{"label":"k","width":2048,"height":1383,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_fb60d8b3ac_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_fb60d8b3ac_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"6k","width":null,"height":null,"source":"undefined","url":"undefined","key":"6k"},{"label":"o","width":11020,"height":7441,"source":"https:\/\/live.staticflickr.com\/65535\/52456436309_ed2523efc8_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456436309_ed2523efc8_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_s.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_q.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_q.jpg","key":"q"},{"label":"t","width":100,"height":75,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_t.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_t.jpg","key":"t"},{"label":"s","width":240,"height":180,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_m.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_m.jpg","key":"s"},{"label":"n","width":320,"height":240,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_n.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":375,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29.jpg","key":"m"},{"label":"z","width":640,"height":480,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_z.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_z.jpg","key":"z"},{"label":"c","width":800,"height":600,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_c.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_c.jpg","key":"c"},{"label":"l","width":1024,"height":768,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_b.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_67d207ca29_b.jpg","key":"l"},{"label":"h","width":1600,"height":1200,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_c6669f543a_h.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_c6669f543a_h.jpg","key":"h"},{"label":"k","width":2048,"height":1536,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_0d65dc5ee9_k.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_0d65dc5ee9_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"o","width":2816,"height":2112,"source":"https:\/\/live.staticflickr.com\/3878\/32514567973_18a6c4950d_o.jpg","url":"https:\/\/live.staticflickr.com\/3878\/32514567973_18a6c4950d_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_t.jpg","key":"t"},{"label":"s","width":240,"height":160,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_m.jpg","key":"s"},{"label":"n","width":320,"height":213,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":333,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10.jpg","key":"m"},{"label":"z","width":640,"height":427,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_z.jpg","key":"z"},{"label":"c","width":800,"height":533,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_c.jpg","key":"c"},{"label":"l","width":1024,"height":683,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_edd8e9ff10_b.jpg","key":"l"},{"label":"h","width":1600,"height":1067,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_1009b1d505_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_1009b1d505_h.jpg","key":"h"},{"label":"k","width":2048,"height":1365,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_907595051a_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_907595051a_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"o","width":5520,"height":3680,"source":"https:\/\/live.staticflickr.com\/65535\/48896760573_d9befc4b6a_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/48896760573_d9befc4b6a_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_s.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_q.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_t.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_t.jpg","key":"t"},{"label":"s","width":240,"height":161,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_m.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_m.jpg","key":"s"},{"label":"n","width":320,"height":215,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_n.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":336,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b.jpg","key":"m"},{"label":"z","width":640,"height":430,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_z.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_z.jpg","key":"z"},{"label":"c","width":800,"height":538,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_c.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_c.jpg","key":"c"},{"label":"l","width":1024,"height":688,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_b.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_96503d319b_b.jpg","key":"l"},{"label":"h","width":1600,"height":1075,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_9316dc07c9_h.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_9316dc07c9_h.jpg","key":"h"},{"label":"o","width":1772,"height":1191,"source":"https:\/\/live.staticflickr.com\/629\/33172841282_e89f00346b_o.jpg","url":"https:\/\/live.staticflickr.com\/629\/33172841282_e89f00346b_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_s.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_q.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_q.jpg","key":"q"},{"label":"t","width":100,"height":66,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_t.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_t.jpg","key":"t"},{"label":"s","width":240,"height":159,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_m.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_m.jpg","key":"s"},{"label":"n","width":320,"height":212,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_n.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":332,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a.jpg","key":"m"},{"label":"z","width":640,"height":425,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_z.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_z.jpg","key":"z"},{"label":"c","width":800,"height":531,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_c.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_c.jpg","key":"c"},{"label":"l","width":1024,"height":680,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_b.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_032c3aa59a_b.jpg","key":"l"},{"label":"h","width":1600,"height":1062,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_3e40e0a5ce_h.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_3e40e0a5ce_h.jpg","key":"h"},{"label":"k","width":2048,"height":1359,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_5725cd999c_k.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_5725cd999c_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"o","width":2784,"height":1848,"source":"https:\/\/live.staticflickr.com\/2936\/33172841532_f55b725992_o.jpg","url":"https:\/\/live.staticflickr.com\/2936\/33172841532_f55b725992_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_s.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_q.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_q.jpg","key":"q"},{"label":"t","width":100,"height":75,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_t.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_t.jpg","key":"t"},{"label":"s","width":240,"height":180,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_m.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_m.jpg","key":"s"},{"label":"n","width":320,"height":240,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_n.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":375,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15.jpg","key":"m"},{"label":"z","width":640,"height":480,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_z.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_z.jpg","key":"z"},{"label":"c","width":800,"height":600,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_c.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_c.jpg","key":"c"},{"label":"l","width":1024,"height":768,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_b.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_3286052f15_b.jpg","key":"l"},{"label":"h","width":1600,"height":1200,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_dab5071b48_h.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_dab5071b48_h.jpg","key":"h"},{"label":"k","width":2048,"height":1536,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_b064409543_k.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_b064409543_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"o","width":3072,"height":2304,"source":"https:\/\/live.staticflickr.com\/2878\/33287332166_8984468f72_o.jpg","url":"https:\/\/live.staticflickr.com\/2878\/33287332166_8984468f72_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_s.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_q.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_q.jpg","key":"q"},{"label":"t","width":100,"height":72,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_t.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_t.jpg","key":"t"},{"label":"s","width":240,"height":173,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_m.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_m.jpg","key":"s"},{"label":"n","width":320,"height":231,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_n.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":361,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f.jpg","key":"m"},{"label":"z","width":640,"height":462,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_z.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_z.jpg","key":"z"},{"label":"c","width":800,"height":578,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_c.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_c.jpg","key":"c"},{"label":"l","width":1024,"height":740,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_b.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_91bd7a9f9f_b.jpg","key":"l"},{"label":"h","width":1600,"height":1156,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_93911aa10b_h.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_93911aa10b_h.jpg","key":"h"},{"label":"k","width":2048,"height":1480,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_e51e6fb416_k.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_e51e6fb416_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"o","width":3171,"height":2291,"source":"https:\/\/live.staticflickr.com\/2851\/33286998566_c7e6bac088_o.jpg","url":"https:\/\/live.staticflickr.com\/2851\/33286998566_c7e6bac088_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_s.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_q.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_t.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_t.jpg","key":"t"},{"label":"s","width":240,"height":160,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_m.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_m.jpg","key":"s"},{"label":"n","width":320,"height":213,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_n.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":333,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623.jpg","key":"m"},{"label":"z","width":640,"height":427,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_z.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_z.jpg","key":"z"},{"label":"c","width":800,"height":533,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_c.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_c.jpg","key":"c"},{"label":"l","width":1024,"height":683,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_b.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_ed2e6cf623_b.jpg","key":"l"},{"label":"h","width":1600,"height":1067,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_4771e7e59a_h.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_4771e7e59a_h.jpg","key":"h"},{"label":"k","width":2048,"height":1365,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_b5518908f8_k.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_b5518908f8_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"6k","width":null,"height":null,"source":"undefined","url":"undefined","key":"6k"},{"label":"o","width":6048,"height":4032,"source":"https:\/\/live.staticflickr.com\/3759\/33327763475_3f8582c302_o.jpg","url":"https:\/\/live.staticflickr.com\/3759\/33327763475_3f8582c302_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_q.jpg","key":"q"},{"label":"t","width":100,"height":68,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_t.jpg","key":"t"},{"label":"s","width":240,"height":162,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_m.jpg","key":"s"},{"label":"n","width":320,"height":216,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":338,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa.jpg","key":"m"},{"label":"z","width":640,"height":432,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_z.jpg","key":"z"},{"label":"c","width":800,"height":540,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_c.jpg","key":"c"},{"label":"l","width":1024,"height":691,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_825c1211aa_b.jpg","key":"l"},{"label":"h","width":1600,"height":1080,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_a701efaf05_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_a701efaf05_h.jpg","key":"h"},{"label":"k","width":2048,"height":1383,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_2b789fa158_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_2b789fa158_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"6k","width":null,"height":null,"source":"undefined","url":"undefined","key":"6k"},{"label":"o","width":11020,"height":7441,"source":"https:\/\/live.staticflickr.com\/65535\/52456697658_461a5427af_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/52456697658_461a5427af_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_t.jpg","key":"t"},{"label":"s","width":240,"height":160,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_m.jpg","key":"s"},{"label":"n","width":320,"height":213,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":333,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44.jpg","key":"m"},{"label":"z","width":640,"height":427,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_z.jpg","key":"z"},{"label":"c","width":800,"height":533,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_c.jpg","key":"c"},{"label":"l","width":1024,"height":683,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_cef6bc2e44_b.jpg","key":"l"},{"label":"h","width":1600,"height":1067,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_263b7f0172_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_263b7f0172_h.jpg","key":"h"},{"label":"k","width":2048,"height":1365,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_b72e642531_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_b72e642531_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"o","width":4332,"height":2888,"source":"https:\/\/live.staticflickr.com\/65535\/53039967132_5cac945de7_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/53039967132_5cac945de7_o.jpg","key":"o"}],[{"label":"sq","width":75,"height":75,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_s.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_s.jpg","key":"sq"},{"label":"q","width":150,"height":150,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_q.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_q.jpg","key":"q"},{"label":"t","width":100,"height":67,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_t.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_t.jpg","key":"t"},{"label":"s","width":240,"height":160,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_m.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_m.jpg","key":"s"},{"label":"n","width":320,"height":213,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_n.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_n.jpg","key":"n"},{"label":"w","width":null,"height":null,"source":"undefined","url":"undefined","key":"w"},{"label":"m","width":500,"height":333,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc.jpg","key":"m"},{"label":"z","width":640,"height":427,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_z.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_z.jpg","key":"z"},{"label":"c","width":800,"height":533,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_c.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_c.jpg","key":"c"},{"label":"l","width":1024,"height":683,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_b.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_2280bcc7fc_b.jpg","key":"l"},{"label":"h","width":1600,"height":1067,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_e4d7371d15_h.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_e4d7371d15_h.jpg","key":"h"},{"label":"k","width":2048,"height":1365,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_5c23835031_k.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_5c23835031_k.jpg","key":"k"},{"label":"3k","width":null,"height":null,"source":"undefined","url":"undefined","key":"3k"},{"label":"4k","width":null,"height":null,"source":"undefined","url":"undefined","key":"4k"},{"label":"5k","width":null,"height":null,"source":"undefined","url":"undefined","key":"5k"},{"label":"o","width":5184,"height":3456,"source":"https:\/\/live.staticflickr.com\/65535\/50472805373_a6fa43dcd5_o.jpg","url":"https:\/\/live.staticflickr.com\/65535\/50472805373_a6fa43dcd5_o.jpg","key":"o"}]];
+		var photoIds = ["50472816638","32485489124","51639088835","33173726632","52456436309","32514567973","48896760573","33172841282","33172841532","33287332166","33286998566","33327763475","52456697658","53039967132","50472805373"];
+
+		!function(){var e=[].slice.call(document.getElementsByClassName("truncated-dots")),t=function(e,t,n){var i;return function(){var a=this,r=arguments,o=function(){i=null,n||e.apply(a,r)},s=n&&!i;clearTimeout(i),i=setTimeout(o,t),s&&e.apply(a,r)}};e.length>0&&e.forEach(function(e){e.addEventListener("click",function(e){var t=e.target.parentNode.getElementsByClassName("description")[0],n=e.target.parentNode.getElementsByClassName("description-full")[0];"block"===n.style.display?(n.style.display="none",t.style.display="block"):(t.style.display="none",n.style.display="block"),parent.postMessage({name:"update:height",height:document.body.clientHeight+"px"},"*")})}),window.document.querySelector(".sharing")&&window.document.querySelector(".flickr-embed-photo").addEventListener("click",function(e){var t,n,i,a={},r="";if(e.target.classList.contains("share-logo")){e.preventDefault(),t=e.target.getAttribute("data-url"),n="nativeShare"+(new Date).getTime(),a.width=640,a.height=480,a.top=(window.screen.height-a.height)/2,a.left=(window.screen.width-a.width)/2;for(i in a)Object.prototype.hasOwnProperty.call(a,i)&&(r+=i+"="+a[i]+",");r=r.slice(0,-1),window.open(t,n,r)}}),window.addEventListener("resize",t(function(){isSlideshow||parent.postMessage({name:"update:resize",size:{width:document.body.clientWidth+"px",height:document.body.clientHeight+"px",sizes:photoSizes[slideshowCurrentPositionIndex]}},"*")},150)),window.addEventListener("click",function(e){var t;e.target&&"A"===e.target.nodeName?t={text:e.target.getAttribute("data-rapid"),href:e.target.href||e.target.parentElement.href}:"truncated-dots"===e.target.className&&(t={text:"expand",href:""}),t&&parent.postMessage({name:"beacon:click",text:t.text,href:t.href},"*")}),setTimeout(function(){document.querySelector(".flickr-embed").removeAttribute("data-initial-fade")},3e3)}();
+		!function(){var e,t=[].slice.call(document.getElementsByClassName("slide-video"));t.length>0&&t.forEach(function(t){var a=t.getElementsByTagName("video")[0];a.addEventListener("play",function(e){e.target.parentElement.setAttribute("data-is-playing","")}),a.addEventListener("pause",function(e){e.target.parentElement.removeAttribute("data-is-playing")}),playerjs&&(e=playerjs.HTML5Adapter(a),e.ready())})}();
+
+
+	</script>
+
+
+</body></html>

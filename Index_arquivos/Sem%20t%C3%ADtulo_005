@@ -1,0 +1,18 @@
+import*as ad5a645e61ae783a8333068e7b45b5ddb7f0eb79ffd2b1304844be2647b89d2b1 from"../o/frontend-taglib-clay/__liferay__/exports/@clayui$autocomplete.js";Liferay.Loader.define("@frontend-taglib-clay$clayui/autocomplete@3.103.1/index",["module"],(function(e){e.exports={__esModule:!0,default:ad5a645e61ae783a8333068e7b45b5ddb7f0eb79ffd2b1304844be2647b89d2b1,...ad5a645e61ae783a8333068e7b45b5ddb7f0eb79ffd2b1304844be2647b89d2b1}}));
+
+import*as a007eadc5a58797f54cd9ed4e639cbc29fb88c9b1199be5643cbcc1685026de70 from"../o/frontend-taglib-clay/__liferay__/exports/@clayui$button.js";Liferay.Loader.define("@frontend-taglib-clay$clayui/button@3.100.0/index",["module"],(function(c){c.exports={__esModule:!0,default:a007eadc5a58797f54cd9ed4e639cbc29fb88c9b1199be5643cbcc1685026de70,...a007eadc5a58797f54cd9ed4e639cbc29fb88c9b1199be5643cbcc1685026de70}}));
+
+import*as a6ee04483ca05cfb69d835c6ce0c1d599cd75c12f4cb3cb95e754a8487476a9f8 from"../o/frontend-taglib-clay/__liferay__/exports/@clayui$drop-down.js";Liferay.Loader.define("@frontend-taglib-clay$clayui/drop-down@3.103.1/index",["module"],(function(c){c.exports={__esModule:!0,default:a6ee04483ca05cfb69d835c6ce0c1d599cd75c12f4cb3cb95e754a8487476a9f8,...a6ee04483ca05cfb69d835c6ce0c1d599cd75c12f4cb3cb95e754a8487476a9f8}}));
+
+import*as a1099e37e92313743b89c3dcc71f09a5b8adcd6581807e697305150ea7eadbb84 from"../o/frontend-taglib-clay/__liferay__/exports/@clayui$form.js";Liferay.Loader.define("@frontend-taglib-clay$clayui/form@3.103.1/index",["module"],(function(e){e.exports={__esModule:!0,default:a1099e37e92313743b89c3dcc71f09a5b8adcd6581807e697305150ea7eadbb84,...a1099e37e92313743b89c3dcc71f09a5b8adcd6581807e697305150ea7eadbb84}}));
+
+import*as a79fe7bba7d39f0b361e8ed605c0526b127ca8dd9dde9950defcad412fa1c6b95 from"../o/frontend-taglib-clay/__liferay__/exports/@clayui$icon.js";Liferay.Loader.define("@frontend-taglib-clay$clayui/icon@3.56.0/index",["module"],(function(d){d.exports={__esModule:!0,default:a79fe7bba7d39f0b361e8ed605c0526b127ca8dd9dde9950defcad412fa1c6b95,...a79fe7bba7d39f0b361e8ed605c0526b127ca8dd9dde9950defcad412fa1c6b95}}));
+
+import*as a4c63d81f6d41462691586088b55a0528ce9a6818b48feebd423e67b42ecfff53 from"../o/frontend-taglib-clay/__liferay__/exports/@clayui$loading-indicator.js";Liferay.Loader.define("@frontend-taglib-clay$clayui/loading-indicator@3.60.0/index",["module"],(function(e){e.exports={__esModule:!0,default:a4c63d81f6d41462691586088b55a0528ce9a6818b48feebd423e67b42ecfff53,...a4c63d81f6d41462691586088b55a0528ce9a6818b48feebd423e67b42ecfff53}}));
+
+import*as a00deccdcbbb4e2b1ed5de2666865c933a4c9f32e56fed184105262c044b3161e from"../o/frontend-js-react-web/__liferay__/exports/classnames.js";Liferay.Loader.define("liferay!frontend-js-react-web$classnames@2.3.1/index",["module"],(function(e){e.exports={__esModule:!0,default:a00deccdcbbb4e2b1ed5de2666865c933a4c9f32e56fed184105262c044b3161e,...a00deccdcbbb4e2b1ed5de2666865c933a4c9f32e56fed184105262c044b3161e}}));
+
+import*as a4ad7b7304ca00f71e74b729773f65a1d4f321bf6d45d3e25964bb51a78bcd92f from"../o/frontend-js-react-web/__liferay__/exports/react.js";Liferay.Loader.define("liferay!frontend-js-react-web$react@16.12.0/index",["module"],(function(e){e.exports={__esModule:!0,default:a4ad7b7304ca00f71e74b729773f65a1d4f321bf6d45d3e25964bb51a78bcd92f,...a4ad7b7304ca00f71e74b729773f65a1d4f321bf6d45d3e25964bb51a78bcd92f}}));
+
+import*as ac0457fdb7a9b21dc76966b78b013e0f012ce409b3b300fc0097eecbe7caab128 from"../o/portal-template-react-renderer-impl/__liferay__/index.js";Liferay.Loader.define("portal-template-react-renderer-impl@5.0.13/index",["module"],(function(e){e.exports=ac0457fdb7a9b21dc76966b78b013e0f012ce409b3b300fc0097eecbe7caab128}));
+
